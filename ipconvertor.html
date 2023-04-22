@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IPv4 to IPv6 Converter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      label {
+        display: block;
+        margin-top: 30px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      button[type="button"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      button[type="button"]:hover {
+        background-color: #45a049;
+      }
+
+      p {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+
+      span {
+        color: #4CAF50;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>IPv4 to IPv6 Converter</h1>
+    <label for="ipv4-input">Enter an IPv4 address:</label>
+    <input type="text" id="ipv4-input">
+    <button type="button" id="convert-button">Convert</button>
+    <p>IPv6 address: <span id="ipv6-output"></span></p>
+    <script>
+    // Get references to the input and output elements
+const ipv4Input = document.getElementById("ipv4-input");
+const ipv6Output = document.getElementById("ipv6-output");
+
+// Add a click event listener to the button
+document.getElementById("convert-button").addEventListener("click", () => {
+  // Get the IPv4 address from the input field
+  const ipv4 = ipv4Input.value;
+
+  // Split the IPv4 address into its parts
+  const ipv4Parts = ipv4.split(".");
+
+  // Convert the IPv4 parts to hexadecimal and pad with zeros
+  const ipv6Parts = ipv4Parts.map(part =>
+    parseInt(part, 10).toString(16).padStart(2, "0")
+  );
+
+  // Insert the necessary colons for the IPv6 address
+  ipv6Parts.splice(2, 0, ":", "ffff:", "0:", "0:");
+
+  // Join the IPv6 parts together
+  const ipv6 = ipv6Parts.join("");
+
+  // Set the IPv6 address as the output
+  ipv6Output.textContent = ipv6;
+});
+    </script>
+  </body>
+</html>
