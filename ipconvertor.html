@@ -55,6 +55,29 @@
       span {
         color: #4CAF50;
       }
+body {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Set the input width to 100% */
+input[type="text"] {
+  width: 100%;
+}
+
+/* Set the button width to 100% */
+button[type="button"] {
+  width: 100%;
+}
+
+/* Add a media query for screens with a minimum width of 481px */
+@media screen and (min-width: 481px) {
+  /* Increase the body maximum width to 800px */
+  body {
+    max-width: 800px;
+  }
+}
     </style>
   </head>
   <body>
