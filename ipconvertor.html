@@ -64,7 +64,7 @@
     <button type="button" id="convert-button">Convert</button>
     <p>IPv6 address: <span id="ipv6-output"></span></p>
     <script>
-    // Get references to the input and output elements
+// Get references to the input and output elements
 const ipv4Input = document.getElementById("ipv4-input");
 const ipv6Output = document.getElementById("ipv6-output");
 
@@ -81,11 +81,8 @@ document.getElementById("convert-button").addEventListener("click", () => {
     parseInt(part, 10).toString(16).padStart(2, "0")
   );
 
-  // Insert the necessary colons for the IPv6 address
-  ipv6Parts.splice(2, 0, ":", "ffff:", "0:", "0:");
-
-  // Join the IPv6 parts together
-  const ipv6 = ipv6Parts.join("");
+  // Insert the necessary colons for the IPv6 address and compress it
+  const ipv6 = ipv6Parts.join(":").replace(/(?:^|:)(?:0(?::|$))+/g, "::");
 
   // Set the IPv6 address as the output
   ipv6Output.textContent = ipv6;
